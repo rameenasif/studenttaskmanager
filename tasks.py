@@ -35,3 +35,13 @@ def show_tasks(tasks):
     for t in tasks:
         mark = "x" if t["done"] else " "
         print(f"[{mark}] {t['id']}. {t['title']}")
+
+
+
+def complete_task(tasks, task_id):
+    """Mark a task as completed. Return True if it was found."""
+    for t in tasks:
+        if t["id"] == task_id:
+            t["done"] = True
+            return True
+    return False
