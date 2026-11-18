@@ -31,7 +31,12 @@ def main():
             else:
                 print("Task not found.")
         elif choice == "4":
-            task_id = int(input("Task ID to delete: "))
+            raw = input("Task ID to delete: ")
+            try:
+                task_id = int(raw)
+            except ValueError:
+                print("Invalid ID. Enter a number.")
+                continue
             if tasks.delete_task(task_list, task_id):
                 tasks.save_tasks(task_list)
                 print("Task deleted.")
