@@ -28,12 +28,18 @@ def main():
         elif choice == "2":
             tasks.show_tasks(task_list)
         elif choice == "3":
-            task_id = int(input("Task ID to complete: "))
-            if tasks.complete_task(task_list, task_id):
-                tasks.save_tasks(task_list)
-                print("Task marked as completed.")
-            else:
-                print("Task not found.")
+            raw = input("Task IDs to complete (e.g. 1 or 1,3): ")
+            try:
+                ids = [int(x) for x in raw.split(",")]
+            except ValueError:
+                print("Invalid input. Enter numbers separated by commas.")
+                continue
+            for task_id in ids:
+                if tasks.complete_task(task_list, task_id):
+                    print(f"Task {task_id} marked as completed.")
+                else:
+                    print(f"Task {task_id} not found or already completed.")
+            tasks.save_tasks(task_list)
         elif choice == "4":
             task_id = int(input("Task ID to delete: "))
             if tasks.delete_task(task_list, task_id):
