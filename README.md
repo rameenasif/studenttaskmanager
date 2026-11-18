@@ -1,1 +1,2 @@
 # studenttaskmanager
+Project status: Planning
