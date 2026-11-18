@@ -1,2 +1,2 @@
 # studenttaskmanager
-Project status: In Development
+Project status: Testing
