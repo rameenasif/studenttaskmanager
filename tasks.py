@@ -39,9 +39,11 @@ def show_tasks(tasks):
 
 
 def complete_task(tasks, task_id):
-    """Mark a task as completed. Return True if it was found."""
+    """Mark a task as completed. Return True only if it was newly completed."""
     for t in tasks:
         if t["id"] == task_id:
+            if t["done"]:
+                return False
             t["done"] = True
             return True
     return False
