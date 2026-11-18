@@ -18,7 +18,11 @@ def main():
         choice = input("Choose an option: ").strip()
         if choice == "1":
             title = input("Task title: ")
-            task = tasks.add_task(task_list, title)
+            try:
+                task = tasks.add_task(task_list, title)
+            except ValueError as error:
+                print(f"Error: {error}")
+                continue
             tasks.save_tasks(task_list)
             print(f"Added task #{task['id']}")
         elif choice == "2":
